@@ -1,7 +1,7 @@
 name: Pull Request
 
 on:
-  [pull_request, push]
+  [pull_request]
 
 jobs:
   make-test:
@@ -31,7 +31,7 @@ jobs:
                   .filter(a => a.name.includes("linux"))
                   .map(a => a.browser_download_url)[0];
             })
-            
+
       - name: Install pack
         run: |
           curl -s -L -o pack.tgz ${{ steps.pack-download-url.outputs.result }}
